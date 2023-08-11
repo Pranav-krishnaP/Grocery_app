@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:grocery_app/Getxdependency.dart';
 import 'package:grocery_app/core/mainpage.dart';
 
 void main() {
+  GetxDependency();
   runApp(const MyApp());
 }
 

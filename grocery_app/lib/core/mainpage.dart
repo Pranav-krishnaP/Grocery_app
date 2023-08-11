@@ -12,38 +12,52 @@ class Mainpage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var h = MediaQuery.of(context).size.height;
     var ind = 0.obs;
     return Scaffold(
-        bottomNavigationBar: BottomAppBar(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              IconButton(
-                  onPressed: () {
-                    ind.value = 0;
-                  },
-                  icon: const Icon(Icons.home)),
-              IconButton(
-                  onPressed: () {
-                    ind.value = 1;
-                  },
-                  icon: const Icon(Icons.explore)),
-              IconButton(
-                  onPressed: () {
-                    ind.value = 2;
-                  },
-                  icon: const Icon(Icons.shopping_cart)),
-              IconButton(
-                  onPressed: () {
-                    ind.value = 3;
-                  },
-                  icon: const Icon(Icons.favorite_outlined)),
-              IconButton(
-                  onPressed: () {
-                    ind.value = 4;
-                  },
-                  icon: const Icon(Icons.person)),
-            ],
+        bottomNavigationBar: Material(
+          elevation: 2,
+          borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+          child: SizedBox(
+            height: h * 0.1,
+            child: Obx(
+              () => Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  IconButton(
+                      color: ind.value == 0 ? Colors.green : Colors.black,
+                      onPressed: () {
+                        ind.value = 0;
+                      },
+                      icon: const Icon(Icons.home)),
+                  IconButton(
+                      color: ind.value == 1 ? Colors.green : Colors.black,
+                      onPressed: () {
+                        ind.value = 1;
+                      },
+                      icon: const Icon(Icons.explore)),
+                  IconButton(
+                      color: ind.value == 2 ? Colors.green : Colors.black,
+                      onPressed: () {
+                        ind.value = 2;
+                      },
+                      icon: const Icon(Icons.shopping_cart)),
+                  IconButton(
+                      color: ind.value == 3 ? Colors.green : Colors.black,
+                      onPressed: () {
+                        ind.value = 3;
+                      },
+                      icon: const Icon(Icons.favorite_outlined)),
+                  IconButton(
+                      color: ind.value == 4 ? Colors.green : Colors.black,
+                      onPressed: () {
+                        ind.value = 4;
+                      },
+                      icon: const Icon(Icons.person)),
+                ],
+              ),
+            ),
           ),
         ),
         body: Obx(() => Column(
