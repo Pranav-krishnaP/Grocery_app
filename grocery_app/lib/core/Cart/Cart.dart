@@ -4,12 +4,15 @@ import 'package:get/get.dart';
 
 import 'package:grocery_app/core/Cart/services/cart_controller.dart';
 import 'package:grocery_app/utils/utils.dart';
+import 'package:grocery_app/widgets/button.dart';
 
 class Cart extends StatelessWidget {
   const Cart({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final CartController cartController = Get.put(CartController());
+    var w = MediaQuery.of(context).size.width;
     return Scaffold(
         body: Column(
       children: [
@@ -17,8 +20,9 @@ class Cart extends StatelessWidget {
         Text(
           'My Cart', // Replace with your actual text
           style: TextStyle(
-            fontFamily: 'Gilroy-Bold',
-            fontSize: 20,
+            fontFamily: "Gilroy-Bold",
+            fontSize: w * 0.05,
+
             height: 18 / 20, // Calculating line height based on fontSize
             letterSpacing: 0,
           ),
@@ -53,18 +57,9 @@ class Cart extends StatelessWidget {
             ),
           ),
         ),
-        Container(
-          width: 380,
-          height: 55,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(19),
-            color: Color(0xff53B175),
-          ),
-          child: Center(
-              child: Text(
-            "Go to Checkout",
-            style: TextStyle(color: Colors.white),
-          )), // Replace with your desired color
+        Button(
+          buttonText: "Go to Checkout",
+          onPressed: cartController.toggleCheckoutCard,
         ),
       ],
     ));

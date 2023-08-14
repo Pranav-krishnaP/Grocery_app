@@ -19,4 +19,11 @@ class CartController extends GetxController {
   ];
 
   // Add methods for adding, removing items from the cart, etc.
+
+  var showCheckoutCard = false.obs;
+
+  void toggleCheckoutCard() {
+    print("toggleCheckoutCard");
+    showCheckoutCard.value = !showCheckoutCard.value;
+  }
 }
