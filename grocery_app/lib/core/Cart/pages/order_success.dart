@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:grocery_app/utils/utils.dart';
+import 'package:grocery_app/widgets/button.dart';
 
 class OrderPlaced extends StatelessWidget {
   const OrderPlaced({super.key});
@@ -8,8 +10,7 @@ class OrderPlaced extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 50),
+        child: SingleChildScrollView(
           child: Column(
             children: [
               Image.asset(
@@ -65,6 +66,22 @@ class OrderPlaced extends StatelessWidget {
                   ),
                 ],
               ),
+              verticalspace(30),
+              Button(
+                buttonText: "Track Order",
+                onPressed: () {
+                  Get.toNamed("/trackorder");
+                },
+              ),
+              verticalspace(5),
+              Text("Back to home",
+                  style: TextStyle(
+                    fontFamily: 'Gilroy',
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    height:
+                        34 / 28, // Calculating line height based on fontSize
+                  ))
             ],
           ),
         ),
