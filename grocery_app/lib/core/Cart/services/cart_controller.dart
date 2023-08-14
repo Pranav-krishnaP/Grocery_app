@@ -23,7 +23,7 @@ class CartController extends GetxController {
   var showCheckoutCard = false.obs;
 
   void toggleCheckoutCard() {
-    print("toggleCheckoutCard");
+    print("toggleCheckoutCard" + showCheckoutCard.value.toString());
     showCheckoutCard.value = !showCheckoutCard.value;
   }
 }

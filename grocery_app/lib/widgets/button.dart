@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class Button extends StatelessWidget {
   String? buttonText;
-  final VoidCallback? onPressed;
+  final Function onPressed;
   Button({
     this.buttonText,
-    this.onPressed,
+    required this.onPressed,
     super.key,
   });
 

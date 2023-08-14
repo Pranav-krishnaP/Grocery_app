@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/core/Cart/cart_item_card.dart';
 import 'package:get/get.dart';
+import 'package:grocery_app/core/Cart/checkout_card.dart';
 
 import 'package:grocery_app/core/Cart/services/cart_controller.dart';
 import 'package:grocery_app/utils/utils.dart';
 import 'package:grocery_app/widgets/button.dart';
 
-class Cart extends StatelessWidget {
+class Cart extends StatefulWidget {
   const Cart({super.key});
 
+  @override
+  State<Cart> createState() => _CartState();
+}
+
+class _CartState extends State<Cart> {
   @override
   Widget build(BuildContext context) {
     final CartController cartController = Get.put(CartController());
     var w = MediaQuery.of(context).size.width;
+    bool checkout = false;
     return Scaffold(
         body: Column(
       children: [
@@ -53,13 +60,29 @@ class Cart extends StatelessWidget {
                     );
                   },
                 ),
+                verticalspace(2),
+                Obx(() => Visibility(
+                      visible: cartController.showCheckoutCard.value,
+                      child: Positioned(
+                        // Adjust the position as needed
+                        child: checkout_card(),
+                      ),
+                    )),
               ],
             ),
           ),
         ),
-        Button(
-          buttonText: "Go to Checkout",
-          onPressed: cartController.toggleCheckoutCard,
+        GestureDetector(
+          onTap: () {
+            print("tapped gesture detector");
+            cartController.toggleCheckoutCard();
+          },
+          child: Button(
+            buttonText: "Go to Checkout",
+            onPressed: () {
+              cartController.toggleCheckoutCard();
+            },
+          ),
         ),
       ],
     ));
