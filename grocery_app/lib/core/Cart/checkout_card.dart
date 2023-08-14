@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:grocery_app/utils/utils.dart';
+import 'package:grocery_app/widgets/button.dart';
 
 class checkout_card extends StatelessWidget {
   const checkout_card({
@@ -10,7 +12,7 @@ class checkout_card extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 414,
-      height: 400,
+
       decoration: BoxDecoration(
         color: Color(0xfff2f3f2),
         borderRadius: BorderRadius.only(
@@ -21,7 +23,7 @@ class checkout_card extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 30),
+            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
             child: Row(
               children: [
                 Text(
@@ -40,7 +42,6 @@ class checkout_card extends StatelessWidget {
                   Icons.close,
                   color: Color(0xFF181725),
                   size: 30,
-                  
                 )
               ],
             ),
@@ -96,6 +97,18 @@ class checkout_card extends StatelessWidget {
               ),
             ),
           ),
+          verticalspace(5),
+          GestureDetector(
+            onTap: () {
+              Get.toNamed("/orderplaced");
+            },
+            child: Button(
+              buttonText: "Place Order",
+              onPressed: () {
+                Get.to("/orderplaced");
+              },
+            ),
+          )
         ],
       ),
       // Add your content here
@@ -124,7 +137,7 @@ class checkout_row_widget extends StatelessWidget {
                 text1!,
                 style: TextStyle(
                   fontFamily: 'Gilroy',
-                  fontSize: 18,
+                  fontSize: 15,
                   fontWeight: FontWeight.w600,
                   height: 22 / 18, // Calculating line height based on fontSize
                   letterSpacing: 0,
@@ -139,7 +152,7 @@ class checkout_row_widget extends StatelessWidget {
                 style: TextStyle(
                   color: Color(0xff181725),
                   fontFamily: 'Gilroy',
-                  fontSize: 16,
+                  fontSize: 15,
                   fontWeight: FontWeight.w600,
                   height: 20 / 16, // Calculating line height based on fontSize
                   letterSpacing: 0,
@@ -159,7 +172,8 @@ class checkout_row_widget extends StatelessWidget {
         Divider(
           color: Color(0xffE2E2E2),
           thickness: 1,
-        )
+        ),
+        verticalspace(5),
       ],
     );
   }

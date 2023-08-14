@@ -61,29 +61,29 @@ class _CartState extends State<Cart> {
                   },
                 ),
                 verticalspace(2),
-                Obx(() => Visibility(
-                      visible: cartController.showCheckoutCard.value,
-                      child: Positioned(
-                        // Adjust the position as needed
-                        child: checkout_card(),
-                      ),
-                    )),
               ],
             ),
           ),
         ),
-        GestureDetector(
-          onTap: () {
-            print("tapped gesture detector");
-            cartController.toggleCheckoutCard();
-          },
-          child: Button(
-            buttonText: "Go to Checkout",
-            onPressed: () {
-              cartController.toggleCheckoutCard();
-            },
-          ),
-        ),
+        Obx(() => Visibility(
+              visible: cartController.showCheckoutCard.value,
+              child: checkout_card(),
+            )),
+        Obx(() => Visibility(
+              visible: !cartController.showCheckoutCard.value,
+              child: GestureDetector(
+                onTap: () {
+                  print("tapped gesture detector");
+                  cartController.toggleCheckoutCard();
+                },
+                child: Button(
+                  buttonText: "Go to Checkout",
+                  onPressed: () {
+                    cartController.toggleCheckoutCard();
+                  },
+                ),
+              ),
+            )),
       ],
     ));
   }
