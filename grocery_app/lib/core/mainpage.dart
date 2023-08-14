@@ -3,17 +3,22 @@ import 'package:get/get.dart';
 
 import 'Account/accoutns.dart';
 import 'Cart/Cart.dart';
-import 'Explore/explore.dart';
+import 'Explore/pages/explore.dart';
 import 'Favourites/favourites.dart';
 import 'Homepage/homepage.dart';
 
 class Mainpage extends StatelessWidget {
-  const Mainpage({super.key});
+  Mainpage({super.key});
   // ignore: prefer_typing_uninitialized_variables
+  final ind = 0.obs;
+  onInit() {
+    ind.value = 0;
+  }
+
   @override
   Widget build(BuildContext context) {
     var h = MediaQuery.of(context).size.height;
-    var ind = 0.obs;
+
     return Scaffold(
         bottomNavigationBar: Material(
           elevation: 2,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grocery_app/Getxdependency.dart';
-import 'package:grocery_app/core/Explore/selected.dart';
+import 'package:grocery_app/core/Explore/pages/selected.dart';
 
 import 'package:grocery_app/core/Cart/pages/order_success.dart';
 import 'package:grocery_app/core/mainpage.dart';
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       initialRoute: '/home',
       getPages: [
-        GetPage(name: '/home', page: () => const Mainpage()),
+        GetPage(name: '/home', page: () => Mainpage()),
         GetPage(name: '/selected', page: () => const Selected()),
         GetPage(name: '/orderplaced', page: () => const OrderPlaced())
       ],
