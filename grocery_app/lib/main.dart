@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:grocery_app/Getxdependency.dart';
 import 'package:grocery_app/core/Explore/selected.dart';
 
+import 'package:grocery_app/core/Cart/pages/order_success.dart';
 import 'package:grocery_app/core/mainpage.dart';
 
 void main() {
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/home',
       getPages: [
         GetPage(name: '/home', page: () => const Mainpage()),
-        GetPage(name: '/selected', page: () => const Selected())
+        GetPage(name: '/selected', page: () => const Selected()),
+        GetPage(name: '/orderplaced', page: () => const OrderPlaced())
       ],
     );
   }
