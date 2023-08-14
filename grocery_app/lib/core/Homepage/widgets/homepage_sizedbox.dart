@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../Detailspage/details.dart';
+
 class Sizedbox_Widget extends StatelessWidget {
   const Sizedbox_Widget({
     super.key,
@@ -27,7 +29,7 @@ class Sizedbox_Widget extends StatelessWidget {
                   children: [
                     GestureDetector(
                         onTap: () {
-                          // Get.to(Details1());
+                          Get.to(Details1());
                         },
                         child: Container_Widget(w: w, h: h)),
                   ],
