@@ -13,37 +13,71 @@ class Selected extends StatelessWidget {
   Widget build(BuildContext context) {
     var h = MediaQuery.of(context).size.height;
     var w = MediaQuery.of(context).size.width;
+    var filterselect = 1.obs;
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        shadowColor: Colors.transparent,
         automaticallyImplyLeading: false,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            IconButton(
-                onPressed: () {
-                  Get.offAndToNamed('/home');
-                },
-                icon: const Icon(Icons.arrow_back_ios_new)),
-            const Text("dfsfd"),
-            IconButton(
-                onPressed: () {
-                  showModalBottomSheet(
-                      context: context,
-                      builder: (BuildContext context) => filtersheet());
-                },
-                icon: const Icon(Icons.tune))
-          ],
-        ),
+        title: Obx(() => filterselect.value == 1
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                      onPressed: () {
+                        Get.offAndToNamed('/home');
+                      },
+                      icon: const Icon(
+                        Icons.arrow_back_ios_new,
+                        color: Colors.black,
+                      )),
+                  const Text(
+                    "dfsfd",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  IconButton(
+                      onPressed: () {
+                        filterselect.value = 0;
+                      },
+                      icon: const Icon(
+                        Icons.tune,
+                        color: Colors.black,
+                      ))
+                ],
+              )
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  IconButton(
+                      onPressed: () {
+                        filterselect.value = 1;
+                      },
+                      icon: const Icon(Icons.close)),
+                  const Text("dfsfd"),
+                ],
+              )),
       ),
-      body: SingleChildScrollView(
+      body: Padding(
+        padding: EdgeInsets.symmetric(vertical: h * 0.02, horizontal: w * 0.1),
         child: SizedBox(
-          child: GridView.count(
-            crossAxisCount: 2,
-            shrinkWrap: true,
-            children: List.generate(Get.arguments['Category'].length, (index) {
-              return items(Get.arguments['Category'][index], h * 0.12, w * 0.4);
-            }),
-          ),
+          child: Obx(() => filterselect.value == 1
+              ? SingleChildScrollView(
+                  child: SizedBox(
+                    child: GridView.count(
+                      mainAxisSpacing: h * 0.12,
+                      crossAxisSpacing: w * 0.05,
+                      crossAxisCount: 2,
+                      shrinkWrap: true,
+                      childAspectRatio: 0.6,
+                      children: List.generate(Get.arguments['Category'].length,
+                          (index) {
+                        return items(
+                            Get.arguments['Category'][index], h * 0.34, w * 1);
+                      }),
+                    ),
+                  ),
+                )
+              : filtersheet()),
         ),
       ),
     );
@@ -52,58 +86,81 @@ class Selected extends StatelessWidget {
 
 Widget items(Items obj, var h, var w) {
   return Container(
-    padding: EdgeInsets.all(h * 0.03),
-    child: Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            width: w * 0.6,
-            height: h * 0.9,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage(obj.imgurl!), fit: BoxFit.fill)),
-          ),
-          verticalspace(h * 0.02),
-          Text(
-            obj.name!,
-            style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontFamily: "Gildon",
-                fontSize: w * 0.12),
-          ),
-          verticalspace(h * 0.02),
-          Text(
-            obj.desc!,
-            style: TextStyle(
-                fontWeight: FontWeight.w300,
-                fontFamily: "Gildon",
-                fontSize: w * 0.08),
-          ),
-          verticalspace(h * 0.02),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
+    padding: EdgeInsets.all(w * 0.03),
+    decoration: BoxDecoration(
+        border: Border.all(color: Colors.black..withOpacity(0.5), width: 0.5),
+        borderRadius: BorderRadius.all(Radius.circular(20))),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          width: double.infinity,
+          height: h * 0.3,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  alignment: Alignment.center,
+                  image: AssetImage(obj.imgurl!),
+                  fit: BoxFit.contain)),
+        ),
+        verticalspace(h * 0.05),
+        Text(
+          obj.name!,
+          style: TextStyle(
+              fontWeight: FontWeight.w700,
+              fontFamily: "Gildon",
+              fontSize: h * 0.08),
+        ),
+        verticalspace(h * 0.005),
+        Text(
+          obj.desc!,
+          style: TextStyle(
+              fontWeight: FontWeight.w300,
+              fontFamily: "Gildon",
+              fontSize: h * 0.05),
+        ),
+        verticalspace(h * 0.05),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              flex: 4,
+              child: Text(
                 obj.price!.toString(),
                 style: TextStyle(
                     fontWeight: FontWeight.w700,
                     fontFamily: "Gildon",
-                    fontSize: w * 0.12),
+                    fontSize: h * 0.06),
               ),
-              SizedBox(
-                  child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
-                child: const Icon(
-                  Icons.add,
-                  color: Colors.white,
+            ),
+            const Expanded(
+              flex: 3,
+              child: SizedBox(),
+            ),
+            Expanded(
+              flex: 3,
+              child: Ink(
+                child: InkWell(
+                  splashFactory: InkRipple.splashFactory,
+                  onHover: (value) {},
+                  onTap: () {},
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.green,
+                        borderRadius: BorderRadius.all(Radius.circular(20))),
+                    child: const Center(
+                      child: Icon(
+                        Icons.add,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
                 ),
-              ))
-            ],
-          )
-        ],
-      ),
+              ),
+            )
+          ],
+        )
+      ],
     ),
   );
 }
@@ -128,15 +185,15 @@ Widget filtersheet() {
 }
 
 Widget filteritems(String name) {
-  var value = false.obs;
+  var change = false.obs;
   return SizedBox(
     child: Row(
       children: [
-        Checkbox(
-            value: value.value,
+        Obx(() => Checkbox(
+            value: change.value,
             onChanged: (bool? value) {
-              value = value;
-            }),
+              change.value = value as bool;
+            })),
         horizontalspace(23),
         const Text("Noodles")
       ],
