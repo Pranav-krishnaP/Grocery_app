@@ -9,7 +9,7 @@ import 'Homepage/homepage.dart';
 
 class Mainpage extends StatelessWidget {
   const Mainpage({super.key});
-
+  // ignore: prefer_typing_uninitialized_variables
   @override
   Widget build(BuildContext context) {
     var h = MediaQuery.of(context).size.height;

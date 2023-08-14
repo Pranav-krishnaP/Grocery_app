@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grocery_app/Getxdependency.dart';
+import 'package:grocery_app/core/Explore/selected.dart';
+
 import 'package:grocery_app/core/mainpage.dart';
 
 void main() {
@@ -17,7 +19,10 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Demo',
       initialRoute: '/home',
-      getPages: [GetPage(name: '/home', page: () => const Mainpage())],
+      getPages: [
+        GetPage(name: '/home', page: () => const Mainpage()),
+        GetPage(name: '/selected', page: () => const Selected())
+      ],
     );
   }
 }

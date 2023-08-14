@@ -11,7 +11,7 @@ List<Categories> categories = [
   Categories(category: "Meat & Fish", imageurl: "Hello"),
   Categories(category: "Bakery & Snacks", imageurl: "Hello"),
   Categories(category: "Dairy & Eggs", imageurl: "Hello"),
-  Categories(category: "Beverages", imageurl: "Hello"),
+  Categories(category: "Beverage", imageurl: "Hello"),
 ];
 
 class Items {
@@ -24,7 +24,7 @@ class Items {
   Items({this.category, this.name, this.desc, this.price, this.imgurl}) {}
 }
 
-List<Items> items = [
+List<Items> itemsr = [
   Items(
       category: "Beverage",
       name: "Diet Coke",
