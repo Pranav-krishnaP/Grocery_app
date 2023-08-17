@@ -90,7 +90,10 @@ class Container_Widget extends StatelessWidget {
             Container(
               width: w * 0.35,
               height: h * 0.13,
-              color: Colors.black,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/homepage/fruit.png')),
+              ),
             ),
             SizedBox(
               height: h * 0.015,

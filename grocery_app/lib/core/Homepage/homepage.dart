@@ -22,7 +22,7 @@ class Homepage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.location_on,
                       size: 25,
                       color: Color(0xFF4C4F4D),
@@ -34,7 +34,7 @@ class Homepage extends StatelessWidget {
                             color: Color(0xFF4C4F4D))),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Container(
@@ -43,7 +43,7 @@ class Homepage extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: Colors.grey[200],
                       borderRadius: BorderRadius.circular(15)),
-                  child: Row(
+                  child: const Row(
                     children: [
                       SizedBox(
                         width: 10,
@@ -73,7 +73,7 @@ class Homepage extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(
                       left: w * 0.05, right: w * 0.05, top: h * 0.015),
-                  child: Row_Widget(),
+                  child: const Row_Widget(),
                 ),
                 Sizedbox_Widget(h: h, w: w),
                 Padding(
@@ -84,13 +84,13 @@ class Homepage extends StatelessWidget {
                           style: GoogleFonts.roboto(
                               fontWeight: FontWeight.w600,
                               fontSize: 24,
-                              color: Color(0xFF181725))),
-                      Spacer(),
+                              color: const Color(0xFF181725))),
+                      const Spacer(),
                       Text('See All',
                           style: GoogleFonts.roboto(
                               fontWeight: FontWeight.w600,
                               fontSize: 16,
-                              color: Color(0xFF53B175)))
+                              color: const Color(0xFF53B175)))
                     ],
                   ),
                 ),
@@ -103,13 +103,13 @@ class Homepage extends StatelessWidget {
                           style: GoogleFonts.roboto(
                               fontWeight: FontWeight.w600,
                               fontSize: 24,
-                              color: Color(0xFF181725))),
-                      Spacer(),
+                              color: const Color(0xFF181725))),
+                      const Spacer(),
                       Text('See All',
                           style: GoogleFonts.roboto(
                               fontWeight: FontWeight.w600,
                               fontSize: 16,
-                              color: Color(0xFF53B175)))
+                              color: const Color(0xFF53B175)))
                     ],
                   ),
                 ),

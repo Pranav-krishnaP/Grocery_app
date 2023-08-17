@@ -13,8 +13,8 @@ class Details1 extends StatefulWidget {
 }
 
 class _Details1State extends State<Details1> {
-  late String valueChoose;
-  List listItem = ['1', '2', '3', '4'];
+  // late String valueChoose;
+  // List listItem = ['1', '2', '3', '4'];
   @override
   Widget build(BuildContext context) {
     var h = MediaQuery.of(context).size.height;
@@ -36,23 +36,37 @@ class _Details1State extends State<Details1> {
                 child: Padding(
                   padding: EdgeInsets.only(
                       top: h * 0.025, left: w * 0.05, right: w * 0.05),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Column(
                     children: [
-                      GestureDetector(
-                        onTap: () {
-                          Get.to(Mainpage());
-                        },
-                        child: Icon(
-                          Icons.arrow_back_ios,
-                          size: 24,
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(Mainpage());
+                            },
+                            child: Icon(
+                              Icons.arrow_back_ios,
+                              size: 24,
+                            ),
+                          ),
+                          Spacer(),
+                          Icon(
+                            Icons.ios_share,
+                            size: 24,
+                          ),
+                        ],
+                      ),
+                      Container(
+                        width: w * 0.7,
+                        height: h * 0.3,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/homepage/fruit.png'),
+                            //fit: BoxFit.cover
+                          ),
                         ),
-                      ),
-                      Spacer(),
-                      Icon(
-                        Icons.ios_share,
-                        size: 24,
-                      ),
+                      )
                     ],
                   ),
                 ),

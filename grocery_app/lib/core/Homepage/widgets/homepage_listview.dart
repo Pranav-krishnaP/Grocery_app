@@ -18,7 +18,10 @@ class ListView_HomePage extends StatelessWidget {
         Container(
           width: w * 0.9,
           height: h * 0.25,
-          color: Colors.grey,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/homepage/banner.png')),
+          ),
         ),
         SizedBox(
           width: w * 0.1,
